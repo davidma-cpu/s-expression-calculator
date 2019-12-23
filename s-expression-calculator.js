@@ -35,15 +35,15 @@ var tokensToList = function (tokens, array) {
 
 //recursive function to evaluate a list of tokens in the form of [operator,expression,expression]
 var evaluate = function (tokenList) {
-    if (isNumeric(tokenList[0])) {
-        return parseInt(tokenList[0]);
+    if (isNumeric(tokenList)) {
+        return parseInt(tokenList);
     }
     else {
-        if (tokenList[0] == "multiply") {
-            return evaluate(tokenList[1]) * evaluate(tokenList[2]);
+        if (tokenList[0] === "multiply") {
+            return (evaluate(tokenList[1]) * evaluate(tokenList[2]));
         }
-        else if (tokenList[0] == "add") {
-            return evaluate(tokenList[1]) + evaluate(tokenList[2]);
+        else if (tokenList[0] === "add") {
+            return (evaluate(tokenList[1]) + evaluate(tokenList[2]));
         }
     }
 }
@@ -60,6 +60,7 @@ else {
     var tokenInput = generateTokens(userInput);
     var tokenList = tokensToList(tokenInput, []);
     var finalResult = evaluate(tokenList);
+    //console.log(tokenList);
     console.log(finalResult);
 }
 
